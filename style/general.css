@@ -7,15 +7,6 @@ html,body, .container-fluid, .content-block, #full-page, #wrapping{
     float: left;
 }
 
-
-#form-content {
-    height: 50%;
-    margin-top: 70%;
-    margin-bottom: 20%;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
 .toggle {
     width: 180px;
 }
@@ -23,12 +14,6 @@ html,body, .container-fluid, .content-block, #full-page, #wrapping{
 
 .form-element {
     margin-top: 20px;
-}
-
-#confirm-button {
-    margin-left: 15%;
-    margin-right: 15%;
-    width: 70%;
 }
 
 

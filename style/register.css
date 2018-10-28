@@ -8,15 +8,34 @@
 
 #transparent-container {
     background-color:rgba(255, 255, 255, 0.75);
-    /* margin-top: 10%;
-    margin-bottom: 10%; */
-    margin:auto;
-    width: 80%;
-    height: 84%;
+    width: 96%;
+    height: 95%;
+    border-radius: 10px;
+}
+
+#form-content {
+    height: 70%;
+    width: 30%;
+    top:20%; 
+}
+
+
+
+#confirm-button {
+    width: 75%;
+    margin: auto;
+    margin-top: 25px;
     left:0; 
-    top:0; 
+    font-size: 16px;
+    right:0;
+    position: absolute; 
+}
+
+.center-component{
+    left:0; 
+    top: 0; 
     right:0; 
     bottom: 0;
     position: absolute;
-    border-radius: 10px;
+    margin: auto;
 }

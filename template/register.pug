@@ -7,4 +7,14 @@ block extra-scripts
 
 block content
     #full-page
-        #transparent-container
+        #transparent-container.center-component
+            form#form-content.center-component(action="", method="post")
+                span#notice-word.form-element &nbsp
+                input.form-control.form-element#id_input(type="text" name='id' placeholder="ID")
+                input.form-control.form-element#psd_input(type="text" name='psd' placeholder="Password")
+                input.form-control.form-element#psd_confirm_input(type="text" name='psd_confirm' placeholder="Please confirm your password")
+                .form-element
+                    input.toggle(type="checkbox" checked data-toggle="toggle" data-on="I am a normal Customer" data-witdh="180" data-off="I am a restaurant Owner" data-offstyle="success" data-onstyle="main")
+                .form-element
+                    button#confirm-button.btn.btn-main.btn-md.btn-block Confirm
+                
