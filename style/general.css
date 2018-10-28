@@ -1,0 +1,42 @@
+html,body, .container-fluid, .content-block, #full-page, #wrapping{
+    height: 100%;
+    width: 100%;
+}
+
+#wrapping{
+    float: left;
+}
+
+
+#form-content {
+    height: 50%;
+    margin-top: 70%;
+    margin-bottom: 20%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.toggle {
+    width: 180px;
+}
+
+
+.form-element {
+    margin-top: 20px;
+}
+
+#confirm-button {
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+}
+
+
+.btn-main {
+    background-color: #6a3906;
+    color: white;
+}
+.btn-main:hover {
+    background-color:#8F4D08;
+    color: white;
+}

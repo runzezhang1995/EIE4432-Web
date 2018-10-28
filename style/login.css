@@ -1,0 +1,67 @@
+html,body, .container-fluid, .content-block, #full-page, #wrapping{
+    height: 100%;
+    width: 100%;
+}
+
+#wrapping{
+    float: left;
+}
+
+#image-holder {
+    margin-right: 500px;
+    margin-left: 0px;
+    height: 100%;
+    background-image: url(../public/restaurant.jpg);
+    background-position:left;
+    display: block;
+}
+
+#form-holder {
+    margin-left: -500px;
+    margin-right: 0px;
+    width: 500px;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    /* overflow: auto; */
+    float:left;
+}
+
+#form-content {
+    height: 50%;
+    margin-top: 70%;
+    margin-bottom: 20%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.toggle {
+    width: 180px;
+}
+
+
+.form-element {
+    margin-top: 20px;
+}
+
+#confirm-button {
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+}
+
+#register-link {
+    margin-top: 40px;
+    color: #6a3906;
+    font-size: 14px;
+}
+
+
+.btn-main {
+    background-color: #6a3906;
+    color: white;
+}
+.btn-main:hover {
+    background-color:#8F4D08;
+    color: white;
+}

@@ -1,0 +1,14 @@
+{
+    "license": "MIT",
+    "authors":[
+        {
+            "name": "Runze Zhang"
+        }
+    ],
+    "require-dev": {
+    },
+    "require": {
+        "pug-php/pug": "^3.2"
+    }
+
+}
