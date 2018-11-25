@@ -49,6 +49,14 @@ function searchRestaurant(params) {
                 console.log(restaurantId);
             })
 
+            $('.hover-cover').popover({
+                placement:'bottom',
+                title:'Order',
+                html:true,
+                content: '<h1>1234</h1>'
+            });
+
+
             console.log(restaurants);
 
         } else {
