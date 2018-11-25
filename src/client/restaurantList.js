@@ -34,10 +34,20 @@ function searchRestaurant(params) {
                         <p class="restaurant-info restaurant-name">${restaurant.restaurant}</p>
                         <p class="restaurant-info restaurant-cuisine">${cuisinesString}</p>
                         <p class="restaurant-info restaurant-cost-and-time">${costNTimeString}</p>
+                        <div class="hover-cover" data-restaurant_id="${restaurant.restaurant_id}">
+                            <h1 style="color:white; margin: 35px auto">Order</h1>
+                        </div>
                     </div>
                 `);
                 
             });
+
+            $('.hover-cover').click((e)=> {
+                console.log(e.currentTarget);
+                const tgt = e.currentTarget;
+                const restaurantId = $(tgt).data('restaurant_id');
+                console.log(restaurantId);
+            })
 
             console.log(restaurants);
 
@@ -60,6 +70,10 @@ function searchRestaurant(params) {
 
 }
 
+
+()=> {
+
+}
 
 
 $(() => {
