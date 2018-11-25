@@ -1,0 +1,35 @@
+extends layout
+block extra-scripts
+    script(src = "../../build/frontend/myprofile.bundle.js")
+    //- script(src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
+    //- style
+        //- include ../../style/login.css
+
+block content
+    #full-page
+        nav.navbar.navbar-default
+            a.navbar-left#myp(for="") My Profile
+            a.navbar-right#author(for="") Hello,Author
+        #total-content
+            #transparent-backboard
+                form.navbar-form.navbar-left#thumbnail(action="")
+                    label#thumlabel Thumbnail
+                    div.container-fluid#image 
+                    button.btn.btn-default#picupload(type="submit") Upload
+
+                form.navbar-form.navbar-left#basicinfo(action="")
+                    label#address Address
+                    br
+                    input.form-control#address-input(type="text",placeholder="Address")
+                    br
+                    label#cuisine Cuisine
+                    br
+                    input.form-control#cuisine-input(type="text",placeholder="Cuisine")
+                    br
+                    label#business-hour Business-Hour
+                    br
+                    input.form-control#business-hour-begin-input(type="text",placeholder="11:00")
+                    text(style="margin-left:10px") To
+                    input.form-control#business-hour-end-input(type="text",placeholder="24:00")
+                    br
+                    button.btn.btn-default#InfoConfirm(type="submit") Confirm
