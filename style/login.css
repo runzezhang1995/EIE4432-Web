@@ -52,16 +52,9 @@ html,body, .container-fluid, .content-block, #full-page, #wrapping{
 
 #register-link {
     margin-top: 40px;
-    color: #6a3906;
+    color: chocolate;
     font-size: 14px;
 }
 
 
-.btn-main {
-    background-color: #6a3906;
-    color: white;
-}
-.btn-main:hover {
-    background-color:#8F4D08;
-    color: white;
-}
+

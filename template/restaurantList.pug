@@ -1,0 +1,51 @@
+extends layout
+block extra-scripts
+    script(src = "../../build/frontend/restaurantList.bundle.js")
+
+
+block content
+    #full-page
+        nav.navbar.navbar-default#navbar
+            a.font-main-bold.navbar-brand(href="#") Easy Order
+            form.navbar-form.navbar-left#searchForm(action="")
+                .form-group
+                    input.form-control(type="text" placeholder="Search")
+                .button.btn.btn-main#searchBtn(type="submit") Submit
+            a.font-main.navbar-right#profileLink(href="#") Hello, Author
+        #left-side-holder
+            #cusine-selection-block
+                h3.font-white Select your prefer cusine 
+                .dropdown#cusine-selection-dropdown
+                    button.btn.btn-main-white.btn-lg.dropdown-toggle#dropdownMenu1(type="button" data-toggle="dropdown" value="1234") All Cusine&nbsp
+                        span.caret
+                    ul.dropdown-menu#cuisineList(aria-labelledby="dropdownMenu1")
+                        li
+                            a.dropdown-selection(href="#", value="") All Cusine
+                        li
+                            a.dropdown-selection(href="#", value="japanese") Japanese
+                        li
+                            a.dropdown-selection(href="#", value="western") Western
+                        li
+                            a.dropdown-selection(href="#", value="korean") Korean
+                        li
+                            a.dropdown-selection(href="#", value="indian") Indian
+                        li
+                            a.dropdown-selection(href="#", value="chinese") Chinese
+                        li
+                            a.dropdown-selection(href="#", value="thai") Thai
+        #main-holder
+            .grid
+                .grid-sizer
+
+
+
+
+//- const cuisine_list = ['Chinese', 'Western', 'Japanese', 'Indian', 'Korean'];
+
+                //- li
+                //-     input#chinese(type="radio", name="cusine", value="chinese")
+                //-     label(for="chinese") chinese
+ 
+
+
+            

@@ -1,0 +1,85 @@
+#navbar {
+    border-bottom-width: 2px;
+    border-bottom-color: chocolate;
+    border-style: solid;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+#searchBtn {
+    margin: 0px 0px 0px 5px;
+}
+
+#profileLink {
+    margin: 0px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+#searchForm {
+    width: 50%;
+}
+
+#main-holder {
+    margin-right: 0px;
+    margin-left: 400px;
+    top: 77px;
+    bottom: 0px;
+    position: absolute;
+    float: left;
+}
+
+#left-side-holder {
+    margin-left: 0px;
+    margin-right: -400px;
+    width: 400px;
+    background-color: chocolate;
+    position: absolute;
+    top: 57px;
+    bottom: 0px;
+    /* overflow: auto; */
+    float:left;
+}
+#cuisineList {
+    list-style-type: none;
+}
+
+
+#cusine-selection-block {
+    position: absolute;
+    left: 30px;
+    right: 50px;
+    top:40px;
+}
+
+#dropdownMenu1 {
+    width: 200px;
+}
+
+.restaurant-info {
+    margin:0 0 0 5px;
+    text-align: left;
+}
+
+.restaurant-name{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.grid {
+    margin:0 50px;
+}
+
+.grid-item {
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    font-size: 14px;
+    margin:20px 0;
+}
+
+.grid-item-img {
+    border-style: solid;
+    border-width: 1px;
+    border-color: chocolate;
+}

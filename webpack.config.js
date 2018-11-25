@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         login: path.resolve(__dirname, 'src/client/login.js'),
         register: path.resolve(__dirname, 'src/client/register.js'),
+        restaurantList: path.resolve(__dirname, 'src/client/restaurantList.js'),
     },
     output:{
         filename:'[name].bundle.js',
