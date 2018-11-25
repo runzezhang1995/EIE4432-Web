@@ -5,11 +5,12 @@ module.exports = {
     entry: {
         login: path.resolve(__dirname, 'src/client/login.js'),
         register: path.resolve(__dirname, 'src/client/register.js'),
+        myprofile: path.resolve(__dirname, 'src/client/myprofile.js'),
     },
     output:{
         filename:'[name].bundle.js',
         path:path.resolve(__dirname, 'build/frontend'),
-        publicPath: '/prj/build/frontend/',
+        publicPath: '/EIE4432-Web/build/frontend/',
     },
     module: {
         rules: [
