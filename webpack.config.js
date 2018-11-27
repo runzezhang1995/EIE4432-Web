@@ -7,6 +7,8 @@ module.exports = {
         register: path.resolve(__dirname, 'src/client/register.js'),
         restaurantList: path.resolve(__dirname, 'src/client/restaurantList.js'),
         myprofile: path.resolve(__dirname, 'src/client/myprofile.js'),
+        myorder: path.resolve(__dirname, 'src/client/myorder.js'),
+        restaurantorder: path.resolve(__dirname, 'src/client/restaurantorder.js')
     },
     output:{
         filename:'[name].bundle.js',

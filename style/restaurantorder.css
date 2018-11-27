@@ -1,0 +1,83 @@
+#myp{
+    margin-left: 20px;
+    font-size: 41px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: chocolate;
+}
+
+#author{
+    margin-right: 20px;
+    font-size: 41px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: chocolate;
+}
+#topbar{
+    border-bottom-width: medium;
+    border-bottom-color: chocolate;
+    margin-bottom:0px
+}
+#total-content{
+    background-image: url(../public/restaurant2.png);
+    /* background-position: top; */
+    position: absolute;
+    top: 102px;
+    bottom: 0px;
+    width: 100%;
+}
+
+#transparent-backboard{
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 10px;
+    position:absolute;
+    top:20px;
+    bottom: 20px;
+    right:40px;
+    left:40px;
+    overflow-y: auto
+}
+.infoblock-item{
+    margin:10px 10%;
+    width: 80%;
+    float: right;
+    position: relative; 
+    border:2px solid blanchedalmond;
+    border-radius: 4px;
+} 
+.infoblock-ordertime{
+    width:15%;
+    float: left;
+    text-align: center;
+    margin: 40px 5%
+}
+
+.infoblock-inner-text{
+    width:50%;
+    float: left;
+    text-align: center;
+    margin:15px 0px
+}
+
+.infoblock-button{
+    width:20%;
+    float: left;
+    text-align: center;
+    margin: 15px 5% 15px 0
+}
+.order-info{
+    color: black;
+    margin:5px 0px;
+    font-size: 20px;
+}
+.btn{
+    width: 110px;
+}
+
+.acceptbtn{
+    margin: 10% 0;
+}
+
+.rejectbtn{
+    margin-top: 10% 0;
+}

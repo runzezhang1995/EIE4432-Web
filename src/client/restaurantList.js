@@ -188,6 +188,7 @@ $(() => {
     
     $('.dropdown-selection').click((e) => {
         const tgt = e.currentTarget;
+        console.log(tgt);
         cuisine = $(tgt).attr('value');
         const cuisineDisplay = $(tgt).text();
         $('#dropdownMenu1').html(cuisineDisplay + arrowSpan);

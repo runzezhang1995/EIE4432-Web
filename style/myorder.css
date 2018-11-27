@@ -1,0 +1,65 @@
+#myp{
+    margin-left: 20px;
+    font-size: 41px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: chocolate;
+}
+
+#author{
+    margin-right: 20px;
+    font-size: 41px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: chocolate;
+}
+#topbar{
+    border-bottom-width: medium;
+    border-bottom-color: chocolate;
+    margin-bottom:0px
+}
+#total-content{
+    background-image: url(../public/restaurant2.png);
+    /* background-position: top; */
+    position: absolute;
+    top: 102px;
+    bottom: 0px;
+    width: 100%;
+}
+
+#transparent-backboard{
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 10px;
+    position:absolute;
+    top:20px;
+    bottom: 20px;
+    right:40px;
+    left:40px
+}
+
+.infoblock-item{
+    margin:30px 200px 0px 200px;
+    position: relative;
+    border:2px solid blanchedalmond;
+    border-radius: 4px;
+}
+
+.infoblock-inner-text{
+    position: absolute;
+    top:20px;
+    right:40px;
+    
+}
+#fixpositiongrid{
+    height: 800px;
+    overflow-y: auto
+}
+
+.order-info{
+    color: black;
+    margin:10px 0px;
+    font-size: 20px;
+} 
+.cancelbtn{
+    margin:10px 90px
+}
