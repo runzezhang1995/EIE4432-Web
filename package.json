@@ -15,7 +15,7 @@
     "moment": "^2.22.2",
     "popper.js": "^1.14.4",
     "sweetalert2": "^7.29.2",
-    "webpack": "^4.23.1",
+    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },

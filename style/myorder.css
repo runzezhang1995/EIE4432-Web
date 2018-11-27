@@ -51,8 +51,12 @@
     
 }
 #fixpositiongrid{
-    height: 800px;
-    overflow-y: auto
+    position:absolute;
+    top:20px;
+    bottom: 20px;
+    right:40px;
+    left:40px;
+    overflow-y: auto;
 }
 
 .order-info{

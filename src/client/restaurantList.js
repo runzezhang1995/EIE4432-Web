@@ -16,7 +16,7 @@ function searchRestaurant() {
     const data = {
         cuisine,
     };
-    $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
+    $.post('http://localhost/project/EIE4432-WEB/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
         if(status === 'success') {
             const restaurants = data.restaurants;
             $('#restaurant-grid').empty();
