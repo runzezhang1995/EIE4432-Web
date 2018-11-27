@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@chenfengyuan/datepicker@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@chenfengyuan/datepicker/-/datepicker-1.0.1.tgz#cf0a0c3fd866348ffb0fd6ec6a963fe5c3ea053f"
+
 "@webassemblyjs/ast@1.7.10":
   version "1.7.10"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.10.tgz#0cfc61d61286240b72fc522cb755613699eea40a"
@@ -3790,6 +3794,10 @@ supports-color@^5.1.0, supports-color@^5.3.0, supports-color@^5.4.0, supports-co
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
   dependencies:
     has-flag "^3.0.0"
+
+sweetalert2@^7.29.2:
+  version "7.29.2"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.29.2.tgz#e79b0e1bb22fa55b377b1907ac18eb89c0c5f643"
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.0"

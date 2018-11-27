@@ -10,8 +10,8 @@ module.exports = {
     },
     output:{
         filename:'[name].bundle.js',
-        path:path.resolve(__dirname, 'build/frontend'),
-        publicPath: '/EIE4432-Web/build/frontend/',
+        path:path.resolve(__dirname, 'build/frontend/'),
+        publicPath: '/EIE4432-WEB/build/frontend/',
     },
     module: {
         rules: [
@@ -52,5 +52,11 @@ module.exports = {
             jQuery: 'jquery',
         }),
     ],
+    devtool: 'source-map',
+    devServer: {
+        compress: true,
+        contentBase: path.join(__dirname, 'public/'),
+        port: 9003,
+    },
 };
 
