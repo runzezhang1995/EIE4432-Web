@@ -1,0 +1,100 @@
+extends layout
+block extra-scripts
+    script(src = jsHost + "/EIE4432-WEB/build/frontend/restaurantList.bundle.js")
+
+
+block content
+    #full-page
+        nav.navbar.navbar-default#navbar
+            a.font-main-bold.navbar-brand(href="#") Easy Order
+            form.navbar-form.navbar-left#searchForm(action="")
+                .form-group
+                    input.form-control(type="text" placeholder="Search")
+                button.button.btn.btn-main#searchBtn Submit
+            a.font-main.navbar-right#profileLink(href="#") Hello, Author
+        #left-side-holder
+            #cusine-selection-block
+                h3.font-white Select your prefer cusine 
+                .dropdown#cusine-selection-dropdown
+                    button.btn.btn-main-white.btn-lg.dropdown-toggle#dropdownMenu1(type="button" data-toggle="dropdown" value="1234") All Cusine&nbsp
+                        span.caret
+                    ul.dropdown-menu#cuisineList(aria-labelledby="dropdownMenu1")
+                        li
+                            a.dropdown-selection(href="#", value="") All Cusine
+                        li
+                            a.dropdown-selection(href="#", value="japanese") Japanese
+                        li
+                            a.dropdown-selection(href="#", value="western") Western
+                        li
+                            a.dropdown-selection(href="#", value="korean") Korean
+                        li
+                            a.dropdown-selection(href="#", value="indian") Indian
+                        li
+                            a.dropdown-selection(href="#", value="chinese") Chinese
+                        li
+                            a.dropdown-selection(href="#", value="thai") Thai
+        #main-holder  
+            .grid#restaurant-grid
+                .grid-sizer     
+
+        #make-order-holder(hidden)
+            #order-body-holder(hidden)
+                #order-header-holder
+                    row
+                        h1#order-header order
+                        button.close#close-button(aria-label="Close")
+                            span(aria-hidden="true") &times;
+                row#order-content-holder
+                    #left-information-hoder.col-lg-6
+                        h1.font-main#restaurant-name-label test name 
+                        h3.font-main Address
+                        h4.order-restaurant-detail-info#restaurant-address-label test address 
+                        h3.font-main Cuisine
+                        h4.order-restaurant-detail-info#restaurant-cuisine-label japanese
+                        h3.font-main Contact Telephone 
+                        h4.order-restaurant-detail-info#restaurant-phone-label 1234-5678 
+                        h3.font-main Website
+                        a.order-restaurant-detail-info#restaurant-website-label(style="font-size:18px; color:black" href="http://www.google.com" target="view_window") www.google.com 
+            
+
+                    #right-make-order-holder.col-lg-6
+                        h1.font-main Select Date
+                        .input-group
+                            input.form-control#date-picker(data-toggle='datepicker' placeholder="Pick a date")
+                            button.btn.btn-default#date-picker-button(aria-label="Left Align" disabled)
+                                span.glyphicon.glyphicon-calendar(aria-hidden="true")
+                        h1.font-main Select Time
+                        .dropdown#select-time-dropdown
+                            button.btn.btn-main-white.btn-lg.dropdown-toggle#dropdownMenu2(type="button" data-toggle="dropdown" value="") Select Time&nbsp
+                                span.caret
+                            ul.dropdown-menu#time-selection-list(aria-labelledby="dropdownMenu2")
+                                
+                        h1.font-main Number of People
+                        input.form-control.order-item#no-of-people(type="number" style="width:100px" min='1' value='1')
+                        h1.font-main Customer Name
+                        input.form-control.order-item#order-name(type="text" style="width: 50%")
+                        h1.font-main Phone Number
+                        input.form-control.order-item#phone-number(type="tel" style="width: 50%")
+                        button.btn.btn-main.btn-md.order-item#confirm-order-button Confirm
+        #order-result-holder(hidden)
+            #order-header-holder
+                row
+                    h1#order-header order
+                    button.close#close-button2(aria-label="Close")
+                        span(aria-hidden="true") &times;
+            row#order-content-holder
+                h1.font-main#order-result-label(style="text-align:center; margin-top: 10%") Order placed, please wait for confirmation from the restaurant
+
+
+    
+
+
+//- const cuisine_list = ['Chinese', 'Western', 'Japanese', 'Indian', 'Korean'];
+
+                //- li
+                //-     input#chinese(type="radio", name="cusine", value="chinese")
+                //-     label(for="chinese") chinese
+ 
+
+
+            

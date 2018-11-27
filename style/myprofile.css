@@ -1,0 +1,136 @@
+label{
+    color: chocolate;
+    font-size: 30px;
+    margin-top:7px;
+    margin-left: 10px;
+    margin-bottom: 7px
+}
+#topbar{
+    border-bottom-width: medium;
+    border-bottom-color: chocolate;
+    margin-bottom:0px
+}
+#total-content{
+    background-image: url(../public/restaurant2.png);
+    /* background-position: top; */
+    position: absolute;
+    top: 102px;
+    bottom: 0px;
+    width: 100%;
+}
+#navbar {
+    margin: 0%
+}
+#transparent-backboard{
+    background-color: rgba(255,255,255,0.75);
+    width:96%;
+    height: 94%;
+    border-radius: 10px;
+    margin:1.5% auto;
+
+}
+#title-form{
+    position: fixed;
+    float: left;
+    width: 100%;
+    height: 100px;
+    border-width: 5px;
+    border-color: black;
+    background-color: aquamarine;
+}
+
+#myp{
+    margin-left: 20px;
+    font-size: 41px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: chocolate;
+}
+
+#author{
+    margin-right: 20px;
+    font-size: 41px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: chocolate;
+}
+#thumbnail{
+    width:80%;
+    margin-top:3%;
+    margin-bottom: 3%;
+    margin-left:10%;
+    border:2px solid blanchedalmond;
+}
+#thumlabel{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: chocolate;
+    font-size: 30px
+}
+#image{
+    border:0.5px solid white;
+    width:200px;
+    height:150px;
+    margin-left:20px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border-radius: 8px;
+}
+
+#Address-input{
+    width: 394px;
+}
+
+#basicinfo{
+    width:80%;
+    margin-left:10%;
+    border:2px solid blanchedalmond;
+}
+
+#form-group{
+    display: block;
+    float: left;
+}
+.form-control{
+    margin-top:10px;
+    margin-left:15px;
+    margin-bottom: 5px
+}
+#dropdownMenu1 {
+    width: 178px;
+    margin-top:10px;
+    margin-left:15px;
+    margin-bottom: 5px
+}
+#cuisineList{
+    margin-left:15px;
+}
+
+#Website-input{
+    width: 394px;
+}
+
+#picupload{
+    background-color: chocolate;
+    margin:10px,5px,0px;
+    border-radius: 8px;
+    color:white;
+}
+
+#submit{
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+#InfoConfirm{
+    background-color: chocolate;
+    margin-left: 200px;
+    margin-top: 20px;
+    border-radius: 8px;
+    color:white;
+    font-size: 20px
+}
+
+
+
+

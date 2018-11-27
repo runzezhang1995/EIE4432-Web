@@ -18,10 +18,56 @@ html,body, .container-fluid, .content-block, #full-page, #wrapping{
 
 
 .btn-main {
-    background-color: #6a3906;
+    background-color: chocolate;
     color: white;
 }
 .btn-main:hover {
     background-color:#8F4D08;
     color: white;
 }
+
+.btn-main-white {
+    color: chocolate;
+    background-color: white;
+}
+.btn-main-white:hover {
+    color:#8F4D08;
+    background-color: white;
+}
+
+
+.font-main {
+    color: chocolate!important;
+}
+
+.font-main-bold {
+    color: chocolate!important;
+    font-weight: bold;
+}
+
+.font-white {
+    color: white;
+}
+
+.font-white-bold {
+    color: white;
+    font-weight: bold;
+}
+
+.bg-main {
+    color: white;
+    background-color: chocolate;
+}
+
+
+@-webkit-keyframes fadeIn {
+    0% {
+    opacity: 0; 
+    }
+    50% {
+    opacity: 0.5; 
+    }
+    100% {
+    opacity: 1;
+    }
+    }

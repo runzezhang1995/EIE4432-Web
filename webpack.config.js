@@ -5,10 +5,14 @@ module.exports = {
     entry: {
         login: path.resolve(__dirname, 'src/client/login.js'),
         register: path.resolve(__dirname, 'src/client/register.js'),
+        restaurantList: path.resolve(__dirname, 'src/client/restaurantList.js'),
+        myprofile: path.resolve(__dirname, 'src/client/myprofile.js'),
+        myorder: path.resolve(__dirname, 'src/client/myorder.js'),
+        restaurantorder: path.resolve(__dirname, 'src/client/restaurantorder.js')
     },
     output:{
         filename:'[name].bundle.js',
-        path:path.resolve(__dirname, 'build/frontend'),
+        path:path.resolve(__dirname, 'build/frontend/'),
         publicPath: '/EIE4432-WEB/build/frontend/',
     },
     module: {
@@ -50,5 +54,11 @@ module.exports = {
             jQuery: 'jquery',
         }),
     ],
+    devtool: 'source-map',
+    devServer: {
+        compress: true,
+        contentBase: path.join(__dirname, 'public/'),
+        port: 9003,
+    },
 };
 
