@@ -10,7 +10,7 @@ function searchRestaurant(params) {
     const data = {
         name: '1234'
     };
-    $.post('http://localhost/prj/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
+    $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
         if(status === 'success') {
             const restaurants = data.restaurants;
             $('.grid').empty();
@@ -68,6 +68,7 @@ $(() => {
 
     $('.dropdown-selection').click((e) => {
         const tgt = e.currentTarget;
+        console.log(tgt);
         cuisine = $(tgt).attr('value');
         const cuisineDisplay = $(tgt).text();
         $('#dropdownMenu1').html(cuisineDisplay + arrowSpan);
