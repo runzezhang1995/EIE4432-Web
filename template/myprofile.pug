@@ -1,6 +1,6 @@
 extends layout
 block extra-scripts
-    script(src = jsHost + "/EIE4432-WEB/build/frontend/myprofile.bundle.js")
+    script(src = jsHost + "/project/EIE4432-WEB/build/frontend/myprofile.bundle.js")
     //- script(src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
     //- style
         //- include ../../style/login.css
@@ -12,64 +12,65 @@ block content
             a.navbar-right#author(for="") Hello,Author
         #total-content
             #transparent-backboard
-                form.navbar-form.navbar-left#thumbnail(action="")
-                    row
-                        .col-lg-6#left-div-main
-                            label#thumlabel Thumbnail
-                            div.container-fluid#image 
-                            button#picupload.btn.btn-default.btn-myprofile(type="submit") Upload
-                        .col-lg-6#right-div-main
-                            label#Restaurant_Name Restaurant_Name
-                            br
-                            input.form-control#Restaurant_Name-input(type="text",placeholder="Name")
-                            br
-                            label#Address Address
-                            br
-                            input.form-control#Address-input(type="text",placeholder="Address")
+                .totalform
+                    form.navbar-form.navbar-left#thumbnail(action="")
+                        row
+                            .col-lg-6#left-div-main
+                                label#thumlabel Thumbnail
+                                div.container-fluid#image 
+                                button#picupload.btn.btn-default.btn-myprofile(type="submit") Upload
+                            .col-lg-6#right-div-main
+                                label#Restaurant_Name Restaurant_Name
+                                br
+                                input.form-control#Restaurant_Name-input(type="text",placeholder="Name")
+                                br
+                                label#Address Address
+                                br
+                                input.form-control#Address-input(type="text",placeholder="Address")
 
-                form.navbar-form.navbar-left#basicinfo(action="")
-                    row
-                        .col-lg-6#left-div-sub
-                            label#Phone Phone
+                    form.navbar-form.navbar-left#basicinfo(action="")
+                        row
+                            .col-lg-6#left-div-sub
+                                label#Phone Phone
+                                br
+                                input.form-control#Phone-input(type="text",placeholder="Phone")
+                                br
+                                label#cuisine Cuisine
+                                .dropdown#cusine-selection-dropdown
+                                    button.btn-main-white.btn.btn-md.dropdown-toggle#dropdownMenu1(type="button" data-toggle="dropdown" value="1234") All Cusine&nbsp
+                                        span.caret
+                                    ul.dropdown-menu#cuisineList(aria-labelledby="dropdownMenu1")
+                                        li
+                                            a.dropdown-selection(href="#", value="japanese") Japanese
+                                        li
+                                            a.dropdown-selection(href="#", value="western") Western
+                                        li
+                                            a.dropdown-selection(href="#", value="korean") Korean
+                                        li
+                                            a.dropdown-selection(href="#", value="indian") Indian
+                                        li
+                                            a.dropdown-selection(href="#", value="chinese") Chinese
+                                        li
+                                            a.dropdown-selection(href="#", value="thai") Thai
+                                label#business-hour Business-Hour
+                                br
+                                input.form-control#business-hour-begin-input(type="text",placeholder="11:00")
+                                text(style="margin-left:10px") To
+                                input.form-control#business-hour-end-input(type="text",placeholder="24:00")
+                        row
+                        .col-lg-6#right-div-sub
+                            label#Restaurant_Size Restaurant_Size
                             br
-                            input.form-control#Phone-input(type="text",placeholder="Phone")
+                            input.form-control#Restaurant_Size-input(type="text",placeholder="Size")
                             br
-                            label#cuisine Cuisine
-                            .dropdown#cusine-selection-dropdown
-                                button.btn-main-white.btn.btn-md.dropdown-toggle#dropdownMenu1(type="button" data-toggle="dropdown" value="1234") All Cusine&nbsp
-                                    span.caret
-                                ul.dropdown-menu#cuisineList(aria-labelledby="dropdownMenu1")
-                                    li
-                                        a.dropdown-selection(href="#", value="japanese") Japanese
-                                    li
-                                        a.dropdown-selection(href="#", value="western") Western
-                                    li
-                                        a.dropdown-selection(href="#", value="korean") Korean
-                                    li
-                                        a.dropdown-selection(href="#", value="indian") Indian
-                                    li
-                                        a.dropdown-selection(href="#", value="chinese") Chinese
-                                    li
-                                        a.dropdown-selection(href="#", value="thai") Thai
-                            label#business-hour Business-Hour
+                            label#Website Website
                             br
-                            input.form-control#business-hour-begin-input(type="text",placeholder="11:00")
+                            input.form-control#Website-input(type="text",placeholder="Website")
+                            br
+                            label#Average_Cost Average_Cost
+                            br
+                            input.form-control#Average_Cost-begin-input(type="text",placeholder="0hkd")
                             text(style="margin-left:10px") To
-                            input.form-control#business-hour-end-input(type="text",placeholder="24:00")
-                    row
-                    .col-lg-6#right-div-sub
-                        label#Restaurant_Size Restaurant_Size
-                        br
-                        input.form-control#Restaurant_Size-input(type="text",placeholder="Size")
-                        br
-                        label#Website Website
-                        br
-                        input.form-control#Website-input(type="text",placeholder="Website")
-                        br
-                        label#Average_Cost Average_Cost
-                        br
-                        input.form-control#Average_Cost-begin-input(type="text",placeholder="0hkd")
-                        text(style="margin-left:10px") To
-                        input.form-control#Average_Cost-end-input(type="text",placeholder="1000hkd")
-                form.navbar-form.navbar-left#submitbtn(action="")
-                    button#InfoConfirm.btn.btn-default Confirm
+                            input.form-control#Average_Cost-end-input(type="text",placeholder="1000hkd")
+                    form.navbar-form.navbar-left#submitbtn(action="")
+                        button#InfoConfirm.btn.btn-default Confirm

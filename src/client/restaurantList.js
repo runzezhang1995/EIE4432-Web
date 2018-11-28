@@ -17,8 +17,12 @@ function searchRestaurant() {
         'cuisine':cuisine,
         'keyword':$('#search_input').val()
     };
+<<<<<<< HEAD
     $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurant.php',data, (data, status, xhr)=> {
         console.log(data);
+=======
+    $.post('http://localhost/project/EIE4432-WEB/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
+>>>>>>> f9d0ed1b183a98ce611e381144c5b03b5fb4ddc9
         if(status === 'success') {
             restaurants = data.restaurants;
             $('#restaurant-grid').empty();
