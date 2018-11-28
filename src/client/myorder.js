@@ -30,7 +30,7 @@ function searchOrder(params) {
                 $('.grid').append(`
                     <div class="infoblock-item " data-order_id="${order.order_id}">
                         <div style="display:inline-block ;position:relative">
-                            <img class="infoblock-item-img" id="img-${order.order_id}" src='../../public/no_image.jpg'} alt=${order.order_id} data-order_id="${order.order_id}"/>
+                            <img class="infoblock-item-img" id="img-${order.order_id}" src=${order.thumbnail_image ? order.thumbnail_image : '../../public/no_image.jpg'} alt=${order.order_id} data-order_id="${order.order_id}"/>
                         </div>
                         <div class="infoblock-inner-text">
                             <p class="order-info">Restaurant Name: ${order.restaurant}</p>
