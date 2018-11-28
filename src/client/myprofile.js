@@ -4,10 +4,10 @@ let cuisine="";
 const arrowSpan = '&nbsp <span class="caret"></span>';
 let restaurantID ='';
 
-function submitInfo(){
+function submitInfo(img_url){
     const restaurantInfo ={
         'restaurant_id':restaurantID,
-        'restaurantimage':"111",
+        'restaurantimage':imgurl,
         'restaurantname': $("#Restaurant_Name-input").val(),
         'restaurantaddress': $("#Address-input").val(),
         'restaurantstart' : $("#business-hour-begin-input").val(),
@@ -34,7 +34,7 @@ function submitInfo(){
 
 function submitPic(){
     const imgdata = {
-        'img': new FormData(this)
+        'img': new FormData($('#picupload').files[0])
     }
     $.ajax({
         url : '',
