@@ -48,6 +48,18 @@ function getInfo(){
     });
 };
 
+function readURL(input) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            console.log("111");
+            console.log(e.currenttTarget);
+            $('#yourimg').attr('src', e.currenttTarget.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+}
+
+
+
 $(() => {
     console.log('ready');   
     console.log('load css');
@@ -59,6 +71,11 @@ $(() => {
         cuisine = $(tgt).attr('value');
         const cuisineDisplay = $(tgt).text();
         $('#dropdownMenu1').html(cuisineDisplay + arrowSpan);
+    });
+
+    $("#picupload").change(()=>{
+        readURL(this);
+        console.log("111");
     });
 
     $("#InfoConfirm").click(submitInfo);

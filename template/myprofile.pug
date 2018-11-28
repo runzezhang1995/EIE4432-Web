@@ -18,7 +18,10 @@ block content
                             .col-lg-6#left-div-main
                                 label#thumlabel Thumbnail
                                 div.container-fluid#image 
-                                button#picupload.btn.btn-default.btn-myprofile(type="submit") Upload
+                                    img(src="#", alt="your image")#yourimg
+                                div
+                                    label#uploadlabel(for="picupload" style="font-size:10px") Choose file to upload.
+                                    input.btn.btn-default#picupload(type="file") 
                             .col-lg-6#right-div-main
                                 label#Restaurant_Name Restaurant_Name
                                 br
