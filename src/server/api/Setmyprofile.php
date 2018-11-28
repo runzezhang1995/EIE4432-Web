@@ -28,14 +28,15 @@
 	
 	if ($conn->query($query1) === TRUE)
 	{
-		echo "New record created succesfully";
+		// echo "New record created succesfully";
 		$result_json = json_encode($result);
 		echo $result_json;
 		exit;
 	}
 	else
 	{
-		echo "Error: " . $query1 . "<br>" . $conn->error;
+		$result['success'] = false;
+		// echo "Error: " . $query1 . "<br>" . $conn->error;
 		$result_json = json_encode(!$result);
 		echo $result_json;
 		exit;

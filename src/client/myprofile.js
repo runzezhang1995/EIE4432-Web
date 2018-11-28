@@ -7,7 +7,7 @@ let restaurantID ='';
 function submitInfo(img_url){
     const restaurantInfo ={
         'restaurant_id':restaurantID,
-        'restaurantimage':imgurl,
+        'restaurantimage':img_url,
         'restaurantname': $("#Restaurant_Name-input").val(),
         'restaurantaddress': $("#Address-input").val(),
         'restaurantstart' : $("#business-hour-begin-input").val(),
@@ -50,8 +50,12 @@ function submitPic(e){
         processData:false,
         success: function(response){
             console.log(response);
-            if(response=!0){
-                $("yourimg").attr('src',response);
+            const url = $.parseJSON(response).img_url.replace('\\', '');
+            console.log(url);
+
+            submitInfo(url);
+            if(url){
+                $("#yourimg").attr('src',url);
                 $(".container-fluid img").show();
             }else{
                 alert("File not uploaded");
