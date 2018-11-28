@@ -4,10 +4,10 @@ let cuisine="";
 const arrowSpan = '&nbsp <span class="caret"></span>';
 let restaurantID ='';
 
-function submitInfo(){
+function submitInfo(img_url){
     const restaurantInfo ={
         'restaurant_id':restaurantID,
-        'restaurantimage':"111",
+        'restaurantimage':imgurl,
         'restaurantname': $("#Restaurant_Name-input").val(),
         'restaurantaddress': $("#Address-input").val(),
         'restaurantstart' : $("#business-hour-begin-input").val(),
@@ -31,6 +31,21 @@ function submitInfo(){
         alert("fail");
     });
 };
+
+function submitImg() {
+ $.ajax('.php', tupian, (data, status, xhr)=> {
+    if(status === 'success') {
+        if(data.success && data.img_url) {
+            submitInfo(data.img_url);
+
+
+        }
+    }
+
+ }) 
+
+}
+
 
 function getInfo(){
     $.post('/EIE4432-WEB/src/server/api/Getmyprofile.php',{"restaurant_id":restaurantID},(data,status)=>{
@@ -81,7 +96,7 @@ $(() => {
         $('#dropdownMenu1').html(cuisineDisplay + arrowSpan);
     });
 
-    $("#InfoConfirm").click(submitInfo);
+    $("#InfoConfirm").click(submitImg);
 
 });
 
