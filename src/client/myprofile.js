@@ -32,17 +32,24 @@ function submitInfo(img_url){
     });
 };
 
-function submitPic(){
-    const imgdata = {
-        'img': new FormData($('#picupload').files[0])
-    }
+function submitPic(e){
+    e.preventDefault();
+    var fd = new FormData();
+    var files = $('#picupload')[0].files[0];
+    fd.append('img',files);
+
+    // const imgdata = {
+    //     'img': new FormData($('#picupload')[0].files[0])
+    // };
+    console.log($('#picupload'));
     $.ajax({
-        url : '',
-        type:'post',
-        data: imgdata,
+        url : '/EIE4432-WEB/src/server/api/Uploadimage.php',
+        type:'POST',
+        data: fd,
         contentType:false,
         processData:false,
         success: function(response){
+            console.log(response);
             if(response=!0){
                 $("yourimg").attr('src',response);
                 $(".container-fluid img").show();
@@ -52,7 +59,7 @@ function submitPic(){
         }
     });
 
-    submitInfo();
+    // submitInfo();
 };
 
 function getInfo(){
@@ -68,11 +75,14 @@ function getInfo(){
         $('#dropdownMenu1').html(cuisine + arrowSpan);
         $("#Phone-input").val(restaurantInfo.phone);
         $("#Website-input").val(restaurantInfo.website);
-        const average_costs = restaurantInfo.average_cost.split('~');
-        if (average_costs.length == 2) {
-            $('#Average_Cost-begin-input').val(average_costs[0]);
-            $('#Average_Cost-end-input').val(average_costs[1]);
+        if(restaurantInfo.average_cost) {
+            const average_costs = restaurantInfo.average_cost.split('~');
+            if (average_costs.length == 2) {
+                $('#Average_Cost-begin-input').val(average_costs[0]);
+                $('#Average_Cost-end-input').val(average_costs[1]);
+            }
         }
+        
 
 
     },"json").fail(()=>{
@@ -80,15 +90,15 @@ function getInfo(){
     });
 };
 
-function readURL(input) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            console.log("111");
-            console.log(e.currenttTarget);
-            $('#yourimg').attr('src', e.currenttTarget.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-}
+// function readURL(input) {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             console.log("111");
+//             console.log(e.currenttTarget);
+//             $('#yourimg').attr('src', e.currenttTarget.result);
+//         }
+//         reader.readAsDataURL(input.files[0]);
+// }
 
 
 
@@ -116,10 +126,10 @@ $(() => {
         $('#dropdownMenu1').html(cuisineDisplay + arrowSpan);
     });
 
-    $("#picupload").change(()=>{
-        readURL(this);
-        console.log("111");
-    });
+    // $("#picupload").change(()=>{
+    //     readURL(this);
+    //     console.log("111");
+    // });
 
     $("#InfoConfirm").click(submitPic);
 
