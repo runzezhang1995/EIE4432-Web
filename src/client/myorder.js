@@ -2,14 +2,14 @@ import $ from './common';
 import '../../style/myorder.css';
 const arrowSpan = '&nbsp <span class="caret"></span>'
 let cuisine = '';
-
+let uid = '';
 
 
 function searchOrder(params) {
     const data = {
-        "user_id":"1"
+        "user_id":uid
     };
-    $.post('http://localhost/project/EIE4432-WEB/src/server/api/myorder.php',data, (data, status, xhr)=> {
+    $.post('/EIE4432-WEB/src/server/api/myorder.php',data, (data, status, xhr)=> {
         console.log(data);
         if(status === 'success') {
             const orders = data.orders;
@@ -33,19 +33,24 @@ function searchOrder(params) {
                             <img class="infoblock-item-img" id="img-${order.order_id}" src='../../public/no_image.jpg'} alt=${order.order_id} data-order_id="${order.order_id}"/>
                         </div>
                         <div class="infoblock-inner-text">
-                            <p class="order-info ">Restaurant Name: ${order.restaurant}</p>
-                            <p class="order-info ">Order Time: ${order.Ordertime}</p>
-                            <p class="order-info ">Order Status: ${order.Orderstatus}</p>
+                            <p class="order-info">Restaurant Name: ${order.restaurant}</p>
+                            <p class="order-info">Order Time: ${order.Ordertime}</p>
+                            <p class="order-info order-status" data-order_id="${order.order_id}">Order Status: ${order.Orderstatus}</p>
                             <button class="btn btn-warning cancelbtn" data-order_id="${order.order_id}" value="Cancel">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp</span>Cancel
                             </button>
                         </div>
                     </div>
                 `);
-                
+                if(order.Orderstatus != 'waiting') {
+                    $(`[data-order_id="${order.order_id}"].cancelbtn`).hide();
+                }
             });
 
-            $("button").click(decideOrder);
+
+
+            $(".cancelbtn").click(decideOrder);
+
             console.log(orders);
 
         } else {
@@ -69,12 +74,15 @@ function decideOrder(e){
 
     const data= {
         'order_id':orderid,
-        'user_id':1
+        'user_id':uid
     };
     console.log(data);
-    $.post('http://localhost/project/EIE4432-WEB/src/server/api/cancelOrder.php',data,(data,status)=>{
+    $.post('/EIE4432-WEB/src/server/api/cancelOrder.php',data,(data,status)=>{
         if(status==="success"){
-            $(`[data-order_id="${orderid}"].cancelbtn`).attr('disabled',true);
+            $(`[data-order_id="${orderid}"].cancelbtn`).hide();
+            $(`[data-order_id="${orderid}"].order-status`).text('Order Status: canceled');
+
+
             alert("Order has been cancelled successfully!")
         }
     },"json").fail(()=>{
@@ -85,6 +93,14 @@ function decideOrder(e){
 
 $(() => {
     console.log('ready');
-    console.log('load css');
+    uid = $('#uid').val();
+    $('#logout-btn').click(()=> {
+        $.cookie('uid', null);
+        $.cookie('rid', null);
+        $.cookie('uname', null);
+        $.cookie('rname', null);
+        window.location.href = "/EIE4432-WEB/src/server/login.php";
+    });
+
     searchOrder();
 });

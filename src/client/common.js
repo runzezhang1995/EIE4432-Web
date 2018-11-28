@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'jquery.cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 

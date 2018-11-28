@@ -13,7 +13,7 @@ module.exports = {
     output:{
         filename:'[name].bundle.js',
         path:path.resolve(__dirname, 'build/frontend/'),
-        publicPath: '/project/EIE4432-WEB/build/frontend/',
+        publicPath: '/EIE4432-WEB/build/frontend/',
     },
     module: {
         rules: [

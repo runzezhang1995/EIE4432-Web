@@ -1,15 +1,15 @@
 extends layout
 block extra-scripts
-    script(src = jsHost + "/project/EIE4432-WEB/build/frontend/myprofile.bundle.js")
-    //- script(src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
-    //- style
-        //- include ../../style/login.css
+    script(src = "/EIE4432-WEB/build/frontend/myprofile.bundle.js")
 
 block content
     #full-page
         nav#topbar.navbar.navbar-default
-            a.navbar-left#myp(for="") My Profile
-            a.navbar-right#author(for="") Hello,Author
+            a.navbar-left#myp(for="#") My Profile
+            a.navbar-left#restaurant-order-link(href="/EIE4432-WEB/src/server/restaurantorder.php") View Orders 
+
+            button.btn.btn-main.navbar-right#logout-btn(for="#") Logout
+            a.navbar-right#author(for="") Hello, !{rname}
         #total-content
             #transparent-backboard
                 .totalform
@@ -20,7 +20,7 @@ block content
                                 div.container-fluid#image 
                                 button#picupload.btn.btn-default.btn-myprofile(type="submit") Upload
                             .col-lg-6#right-div-main
-                                label#Restaurant_Name Restaurant_Name
+                                label#Restaurant_Name Restaurant Name
                                 br
                                 input.form-control#Restaurant_Name-input(type="text",placeholder="Name")
                                 br
@@ -52,14 +52,14 @@ block content
                                             a.dropdown-selection(href="#", value="chinese") Chinese
                                         li
                                             a.dropdown-selection(href="#", value="thai") Thai
-                                label#business-hour Business-Hour
+                                label#business-hour Business Hour
                                 br
                                 input.form-control#business-hour-begin-input(type="text",placeholder="11:00")
                                 text(style="margin-left:10px") To
                                 input.form-control#business-hour-end-input(type="text",placeholder="24:00")
                         row
                         .col-lg-6#right-div-sub
-                            label#Restaurant_Size Restaurant_Size
+                            label#Restaurant_Size Restaurant Size
                             br
                             input.form-control#Restaurant_Size-input(type="text",placeholder="Size")
                             br
@@ -67,10 +67,12 @@ block content
                             br
                             input.form-control#Website-input(type="text",placeholder="Website")
                             br
-                            label#Average_Cost Average_Cost
+                            label#Average_Cost Average Cost
                             br
-                            input.form-control#Average_Cost-begin-input(type="text",placeholder="0hkd")
-                            text(style="margin-left:10px") To
-                            input.form-control#Average_Cost-end-input(type="text",placeholder="1000hkd")
+                            input.form-control#Average_Cost-begin-input(type="text",placeholder="0")
+                            text(style="margin-left:4px") HKD  To
+                            input.form-control#Average_Cost-end-input(type="text",placeholder="1000")
+                            text(style="margin-left:4px") HKD
+
                     form.navbar-form.navbar-left#submitbtn(action="")
                         button#InfoConfirm.btn.btn-default Confirm

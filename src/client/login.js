@@ -1,14 +1,10 @@
 import $ from './common';
 import '../../style/login.css';
 
+
 $(() => {
     console.log('ready');
-    console.log('load css');
     $('#toggle_button-one').bootstrapToggle();
-
-  
-
-
     
     $('#confirm-button').click((e)=> {
         e.preventDefault();
@@ -20,30 +16,27 @@ $(() => {
         }
 
         const password = $('#psd_input').val();
-        // const passwordRS = /^[a-zA-Z]\w{5,17}$/;
-        // if (!password.match(passwordRS)) {
-        //     alert('please input a valid password');
-        // }
-        
         const isOwner = !$('#toggle_button').prop('checked');
 
         
         e.preventDefault();
-        console.log(username);
-        console.log(password);
-        console.log(isOwner);
 
-        const url = "http://localhost/EIE4432-WEB/src/server/api/".concat(isOwner? "restaurantLogin.php" : "customerLogin.php");
-        console.log(url);
+        const url = "/EIE4432-WEB/src/server/api/".concat(isOwner? "restaurantLogin.php" : "customerLogin.php");
         $.post(url, {username, password}, (data, status) => {
             if (status === 'success') {
-                if (data.success == 'false') {
+                if (data.success != true) {
                     alert(data.error);
                 } else {
+                    console.log(data);
+
                     if (isOwner) {
-                        window.location.href = "http://localhost/EIE4432-WEB/src/server/restaurantorder.php";
+                        $.cookie('rid', data.rid);
+                        $.cookie('rname', username);
+                        window.location.href = "/EIE4432-WEB/src/server/restaurantorder.php";
                     } else {
-                        window.location.href = "http://localhost/EIE4432-WEB/src/server/restaurantList.php";
+                        $.cookie('uid', data.uid);
+                        $.cookie('uname', username);
+                        window.location.href = "/EIE4432-WEB/src/server/restaurantList.php";
                     }
 
                 }

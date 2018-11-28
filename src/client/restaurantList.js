@@ -8,6 +8,8 @@ import moment from 'moment';
 const arrowSpan = '&nbsp <span class="caret"></span>'
 let cuisine = '';
 let restaurants = [];
+let uid = '';
+
 
 // get list of restaurants from server 
 
@@ -17,12 +19,8 @@ function searchRestaurant() {
         'cuisine':cuisine,
         'keyword':$('#search_input').val()
     };
-<<<<<<< HEAD
-    $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurant.php',data, (data, status, xhr)=> {
+    $.post('/EIE4432-WEB/src/server/api/getRestaurant.php',data, (data, status, xhr)=> {
         console.log(data);
-=======
-    $.post('http://localhost/project/EIE4432-WEB/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
->>>>>>> f9d0ed1b183a98ce611e381144c5b03b5fb4ddc9
         if(status === 'success') {
             restaurants = data.restaurants;
             $('#restaurant-grid').empty();
@@ -34,10 +32,12 @@ function searchRestaurant() {
                 if (restaurant.restaurant === null) {
                     
                 } else {
-                    const costNTimeString = restaurant.average_cost + ' ' + restaurant.start + ' - ' + restaurant.close;
+                    const costNTimeString = restaurant.average_cost + ' ' +
+                        moment(restaurant.start,'HH:mm:ss').format('HH:mm') + ' - ' + 
+                        moment(restaurant.close,'HH:mm:ss').format('HH:mm') ;
 
                     $('#restaurant-grid').append(`
-                        <div class="grid-item  col-md-3 col-lg-2" style="text-align:center" data-restaurant_id="${restaurant.restaurant_id}">
+                        <div class="grid-item  col-md-3 col-lg-2" style="text-align:center;min-height:200px" data-restaurant_id="${restaurant.restaurant_id}">
                             <div style="display:inline-block;position:relative">
                                 <img class="img-responsive grid-item-img" id="img-${restaurant.restaurant_id}" src='../../public/no_image.jpg'} alt=${restaurant.restaurant_id} data-restaurant_id="${restaurant.restaurant_id}"/>
                             </div>
@@ -51,7 +51,6 @@ function searchRestaurant() {
                     `);
                     
                 }
-               
             });
 
             $('.hover-cover').click((e)=> {
@@ -106,10 +105,7 @@ function searchRestaurant() {
 
 
                     const today = moment();
-                    if (moment(date).isBefore(today))  {
-                        alert('Please select a valid date');
-                        return;
-                    }
+                    
                     const time = $('#dropdownMenu2').val();
                     if(!time) {
                         alert('Please select a valid time');
@@ -128,7 +124,7 @@ function searchRestaurant() {
                     }
 
                     const dataToSubmit = {
-                        "user_id":'7',
+                        "user_id": uid,
                         "restaurant_id": restaurantId,
                         "numberofpeople": noOfPeople,
                         "orderdate":moment(date, 'MM/DD/YYYY').format('YYYY-MM-DD'),
@@ -138,7 +134,7 @@ function searchRestaurant() {
                         "ordertime": moment().format(),
                     }
                     console.log(dataToSubmit);
-                    $.post('http://localhost/EIE4432-WEB/src/server/api/Order.php', dataToSubmit, (data, status) => {
+                    $.post('/EIE4432-WEB/src/server/api/Order.php', dataToSubmit, (data, status) => {
                         console.log(data);
                         console.log(status);
                     if (status === 'success') {
@@ -187,6 +183,7 @@ function searchRestaurant() {
 
 $(() => {
     console.log('ready');
+    uid = $('#uid').val();
     searchRestaurant();
     //init calendar 
 
@@ -199,14 +196,12 @@ $(() => {
         e.preventDefault(); // Prevent to pick the date
         }
     });
-        
-
     // set grid-item click function 
     
     $('.dropdown-selection').click((e) => {
         const tgt = e.currentTarget;
         console.log(tgt);
-        cuisine = $(tgt).attr('value');
+        cuisine =cuisine =$(tgt).text();
         const cuisineDisplay = $(tgt).text();
         $('#dropdownMenu1').html(cuisineDisplay + arrowSpan);
     });

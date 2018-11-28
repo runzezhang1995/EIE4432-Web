@@ -31,9 +31,9 @@
 		//$error="The restaurant name already exist,please change name";
 			//echo json_encode($result);
 			//exit;
-			$n=$row["rid"];	
+			$n=$row["Rid"];	
 			$result['success']=true;
-			$result['uid']=$n;
+			$result['rid']=$n;
 			echo json_encode($result);
 			exit;
 		}

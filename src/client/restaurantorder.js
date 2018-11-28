@@ -2,11 +2,13 @@ import $ from './common';
 import '../../style/restaurantorder.css';
 const arrowSpan = '&nbsp <span class="caret"></span>'
 let cuisine = '';
+let restaurantId = '';
+
 function searchOrder(params) {
     const data = {
-        "restaurant_id": '4'
+        "restaurant_id": restaurantId
     };
-    $.post('http://localhost/project/EIE4432-WEB/src/server/api/ReceivedOrder.php',data, (data, status, xhr)=> {
+    $.post('/EIE4432-WEB/src/server/api/ReceivedOrder.php',data, (data, status, xhr)=> {
         console.log(data);
         if(status === 'success') {
             const orders = data.orders;
@@ -51,7 +53,8 @@ function searchOrder(params) {
                 
             });
 
-            $("button").click(decideOrder);
+            $(".rejectbtn, .acceptbtn").click(decideOrder);
+
             console.log(orders);
 
         } else {
@@ -74,13 +77,13 @@ function decideOrder(e){
     const orderstatus =$(tgt).val();
 
     const data = {
-        'restaurant_id':'4',
+        'restaurant_id':restaurantId,
         'order_id':orderid,
         'status':orderstatus
     };
     console.log(data);
     if(orderstatus =="accept"){
-        $.post('http://localhost/project/EIE4432-WEB/src/server/api/HandleOrder.php',data,(data,status)=>{
+        $.post('/EIE4432-WEB/src/server/api/HandleOrder.php',data,(data,status)=>{
             if(status==="success"){
                 console.log("success");
                 $(`[data-order_id="${orderid}"].acceptbtn`).attr('disabled',true);
@@ -96,7 +99,7 @@ function decideOrder(e){
             // alert('fail to load restaurant information')
         })
     }else if(orderstatus =="reject"){
-        $.post('http://localhost/project/EIE4432-WEB/src/server/api/HandleOrder.php',data,(data,status)=>{
+        $.post('/EIE4432-WEB/src/server/api/HandleOrder.php',data,(data,status)=>{
             if(status==="success"){
 
                 
@@ -125,5 +128,15 @@ function decideOrder(e){
 $(() => {
     console.log('ready');
     console.log('load css');
+
+    $('#logout-btn').click(()=> {
+        $.cookie('uid', null);
+        $.cookie('rid', null);
+        $.cookie('uname', null);
+        $.cookie('rname', null);
+        window.location.href = "/EIE4432-WEB/src/server/login.php";
+    });
+    
+    restaurantId = $('#rid').val();
     searchOrder();
 });

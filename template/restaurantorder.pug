@@ -1,15 +1,12 @@
 extends layout
 block extra-scripts
     script(src = "../../build/frontend/restaurantorder.bundle.js")
-    //- script(src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
-    //- style
-        //- include ../../style/login.css
 
 block content
     #full-page
         nav.navbar.navbar-default#topbar
-            a.navbar-left#myp(for="") Restaurant Orders
-            a.navbar-right#author(for="") Hello,Author
+            a.navbar-left#myp(href="#") Restaurant Orders
+            a.navbar-right#author(href="/EIE4432-WEB/src/server/myprofile.php") Hello, !{rname}
     #total-content
         #transparent-backboard
             .infoblock
