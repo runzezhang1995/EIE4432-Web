@@ -7,66 +7,72 @@ import moment from 'moment';
 
 const arrowSpan = '&nbsp <span class="caret"></span>'
 let cuisine = '';
-const restaurants = [];
+let restaurants = [];
 
 // get list of restaurants from server 
 
 
 function searchRestaurant() {
     const data = {
-        cuisine,
+        'cuisine':cuisine,
+        'keyword':$('#search_input').val()
     };
-    $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurantList.php',data, (data, status, xhr)=> {
+    $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurant.php',data, (data, status, xhr)=> {
+        console.log(data);
         if(status === 'success') {
-            const restaurants = data.restaurants;
+            restaurants = data.restaurants;
             $('#restaurant-grid').empty();
-            if (restaurants.length === 0) {
+            if (!restaurants || restaurants.length === 0) {
                 $('#restaurant-grid').append('<h3 class="text-center">No restaurant found</h3>');
                 return;
             }
             restaurants.forEach(restaurant => {
-                const costNTimeString = restaurant.average_cost + ' ' + restaurant.start_time + ' - ' + restaurant.end_time;
+                if (restaurant.restaurant === null) {
+                    
+                } else {
+                    const costNTimeString = restaurant.average_cost + ' ' + restaurant.start + ' - ' + restaurant.close;
 
-                $('#restaurant-grid').append(`
-                    <div class="grid-item col-xs-12 col-sm-6 col-md-3 col-lg-2" style="text-align:center" data-restaurant_id="${restaurant.restaurant_id}">
-                        <div style="display:inline-block;position:relative">
-                            <img class="img-responsive grid-item-img" id="img-${restaurant.restaurant_id}" src='../../public/no_image.jpg'} alt=${restaurant.restaurant_id} data-restaurant_id="${restaurant.restaurant_id}"/>
+                    $('#restaurant-grid').append(`
+                        <div class="grid-item  col-md-3 col-lg-2" style="text-align:center" data-restaurant_id="${restaurant.restaurant_id}">
+                            <div style="display:inline-block;position:relative">
+                                <img class="img-responsive grid-item-img" id="img-${restaurant.restaurant_id}" src='../../public/no_image.jpg'} alt=${restaurant.restaurant_id} data-restaurant_id="${restaurant.restaurant_id}"/>
+                            </div>
+                            <p class="restaurant-info restaurant-name">${restaurant.restaurant}</p>
+                            <p class="restaurant-info restaurant-cuisine">${restaurant.cuisines}</p>
+                            <p class="restaurant-info restaurant-cost-and-time">${costNTimeString}</p>
+                            <div class="hover-cover" data-restaurant_id="${restaurant.restaurant_id}">
+                                <h1 style="color:white; margin: 35px auto">Order</h1>
+                            </div>
                         </div>
-                        <p class="restaurant-info restaurant-name">${restaurant.restaurant}</p>
-                        <p class="restaurant-info restaurant-cuisine">${restaurant.cuisine}</p>
-                        <p class="restaurant-info restaurant-cost-and-time">${costNTimeString}</p>
-                        <div class="hover-cover" data-restaurant_id="${restaurant.restaurant_id}">
-                            <h1 style="color:white; margin: 35px auto">Order</h1>
-                        </div>
-                    </div>
-                `);
-                
+                    `);
+                    
+                }
+               
             });
 
             $('.hover-cover').click((e)=> {
                 const tgt = e.currentTarget;
                 const restaurantId = $(tgt).data('restaurant_id');
+                console.log(restaurantId);
 
                 let restaurant = null;
                 restaurants.forEach(rt => {
-                    if(rt.restaurant_id === restaurantId) {
+                    if(rt.restaurant_id == restaurantId) {
                         restaurant = rt;
                     }
                 });
+
+                console.log(restaurant);
                 $('#restaurant-address-label').text(restaurant.address);
                 $('#restaurant-phone-label').text(restaurant.phone);
                 $('#restaurant-website-label').text(restaurant.website);
-                $('#restaurant-cuisine-label').text(restaurant.cuisine);
+                $('#restaurant-cuisine-label').text(restaurant.cuisines);
                 $('#restaurant-name-label').text(restaurant.restaurant);
-                const startTime = moment(restaurant.start_time, 'HH:mm');
-                const endTime = moment(restaurant.end_time, 'HH:mm');
+                const startTime = moment(restaurant.start, 'HH:mm:ss');
+                const endTime = moment(restaurant.close, 'HH:mm:ss');
 
                 $('#time-selection-list').empty();
-                if (restaurants.length === 0) {
-                    $('#time-selection-list').append('<h3 class="text-center">No time available</h3>');
-                    return;
-                }
-
+                
                 while(startTime.isBefore(endTime)) {
                     const timeString = startTime.format('HH:mm');
                     $('#time-selection-list').append(`
@@ -91,6 +97,10 @@ function searchRestaurant() {
                 $('#confirm-order-button').click((e)=> {
                     e.preventDefault();
                     const date = $('#date-picker').datepicker('getDate', true);
+                    const dateString = moment(date, 'MM/DD/YYYY');
+                    console.log(dateString);
+
+
                     const today = moment();
                     if (moment(date).isBefore(today))  {
                         alert('Please select a valid date');
@@ -114,15 +124,19 @@ function searchRestaurant() {
                     }
 
                     const dataToSubmit = {
-                        date,
-                        time,
-                        noOfPeople,
-                        customerName,
-                        phoneNumber,
+                        "user_id":'7',
+                        "restaurant_id": restaurantId,
+                        "numberofpeople": noOfPeople,
+                        "orderdate":moment(date, 'MM/DD/YYYY').format('YYYY-MM-DD'),
+                        "orderperiod": time,
+                        "ordername":customerName,
+                        "Ophone": phoneNumber,
+                        "ordertime": moment().format(),
                     }
                     console.log(dataToSubmit);
-                    $.post('http://localhost/EIE4432-WEB/src/server/api/getRestaurantList   .php', dataToSubmit, (data, status) => {
-                        
+                    $.post('http://localhost/EIE4432-WEB/src/server/api/Order.php', dataToSubmit, (data, status) => {
+                        console.log(data);
+                        console.log(status);
                     if (status === 'success') {
                             $('#order-result-label').text = " Order placed, please wait for confirmation from the restaurant";
                         } else {
@@ -153,7 +167,6 @@ function searchRestaurant() {
         } 
     }, 'json').fail(() => {
         alert('fail to load restaurant information');
-
     });
     
 
@@ -174,7 +187,7 @@ $(() => {
     //init calendar 
 
     $('[data-toggle="datepicker"]').datepicker();
-    const today_string = moment().format('dd/MM/YYYY');
+    const today_string = moment().format('MM/DD/YYYY');
 
     $('[data-toggle="datepicker"]').datepicker('setDate',today_string);
     $('[data-toggle="datepicker"]').on('pick.datepicker', function (e) {

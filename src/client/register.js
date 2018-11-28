@@ -31,12 +31,31 @@ $(() => {
         }
         
         const isOwner = !$('#toggle_button').prop('checked');
-
-        
         e.preventDefault();
+        
+        
+
+
         console.log(username);
         console.log(password);
         console.log(isOwner);
+
+        const url = "http://localhost/EIE4432-WEB/src/server/api/".concat(isOwner? "restaurantRegister.php" : "customerRegister.php");
+        console.log(url);
+        $.post(url, {username, password}, (data, status) => {
+            if (status === 'success') {
+                if (data.success == 'false') {
+                    alert(data.error);
+                } else {
+                    setTimeout(()=> {
+                        window.location.href = "http://localhost/EIE4432-WEB/src/server/".concat("login.php");
+                    },3000);
+                    alert('Register success, you will be redirect soon');
+                }    
+            }    
+            
+        }, 'json'); 
+
     });
 });
 
