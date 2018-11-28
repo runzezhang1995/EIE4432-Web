@@ -99,12 +99,12 @@ function getInfo(){
         console.log(restaurantInfo);
         $("#Restaurant_Name-input").val(restaurantInfo.restaurant)  ;
         $("#Address-input").val(restaurantInfo.address)  ;
-        $("#yourimg").attr('src',restaurantInfo.thumbnail_image);
+        $("#yourimg").attr('src',restaurantInfo.thumbnail_image?restaurantInfo.thumbnail_image: '../../public/no_image.jpg');
         $("#business-hour-begin-input").val(restaurantInfo.start) ;
         $("#business-hour-end-input").val(restaurantInfo.close) ;
         $("#Restaurant_Size-input").val(restaurantInfo.size) ;
         cuisine = restaurantInfo.cuisines;
-        $('#dropdownMenu1').html(cuisine + arrowSpan);
+        $('#dropdownMenu1').html(cuisine? cuisine: 'All Cuisine ' + arrowSpan);
         $("#Phone-input").val(restaurantInfo.phone);
         $("#Website-input").val(restaurantInfo.website);
         if(restaurantInfo.average_cost) {
