@@ -15,7 +15,7 @@ label{
     background-image: url(../public/restaurant2.png);
     /* background-position: top; */
     position: absolute;
-    top: 102px;
+    top: 69px;
     bottom: 0px;
     width: 100%;
 }
@@ -40,17 +40,18 @@ label{
     background-color: aquamarine;
 }
 
-#myp{
+#myp, #restaurant-order-link{
     margin-left: 20px;
-    font-size: 41px;
+    font-size: 18px;
     margin-top:20px;
     margin-bottom:20px;
     color: chocolate;
 }
 
+
 #author{
     margin-right: 20px;
-    font-size: 41px;
+    font-size: 18px;
     margin-top:20px;
     margin-bottom:20px;
     color: chocolate;
@@ -113,8 +114,8 @@ label{
 
 #picupload{
     background-color: chocolate;
-    margin:10px 5px;
-    width: 100px;
+    margin:0px 5px 10px 10px;
+    width: 200px;
     border-radius: 8px;
     color:white
 }
@@ -142,3 +143,11 @@ label{
     overflow-y: auto;
 }
 
+
+#logout-btn {
+    margin: 15px;
+}
+
+#Average_Cost-begin-input, #Average_Cost-end-input {
+    width: 30%;
+}

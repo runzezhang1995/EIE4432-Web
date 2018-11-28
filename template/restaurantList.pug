@@ -1,6 +1,6 @@
 extends layout
 block extra-scripts
-    script(src = jsHost + "/EIE4432-WEB/build/frontend/restaurantList.bundle.js")
+    script(src = "/EIE4432-WEB/build/frontend/restaurantList.bundle.js")
 
 
 block content
@@ -9,9 +9,9 @@ block content
             a.font-main-bold.navbar-brand(href="#") Easy Order
             form.navbar-form.navbar-left#searchForm(action="")
                 .form-group
-                    input.form-control(type="text" placeholder="Search")
+                    input.form-control#search_input(type="text" placeholder="Search")
                 button.button.btn.btn-main#searchBtn Submit
-            a.font-main.navbar-right#profileLink(href="#") Hello, Author
+            a.font-main.navbar-right#profileLink(href="/EIE4432-WEB/src/server/myorder.php") Hello, !{uname}
         #left-side-holder
             #cusine-selection-block
                 h3.font-white Select your prefer cusine 

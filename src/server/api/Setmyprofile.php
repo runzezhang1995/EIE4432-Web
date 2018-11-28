@@ -1,4 +1,6 @@
 <?php
+	$post = $_POST;
+	$file = $_FILES;
 	$Restaurantid = $_POST["restaurant_id"];
 	$Rname = $_POST["restaurantname"];
 	$RAddress = $_POST["restaurantaddress"];

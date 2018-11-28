@@ -1,6 +1,6 @@
 #myp{
     margin-left: 20px;
-    font-size: 41px;
+    font-size: 18px;
     margin-top:20px;
     margin-bottom:20px;
     color: chocolate;
@@ -8,7 +8,7 @@
 
 #author{
     margin-right: 20px;
-    font-size: 41px;
+    font-size: 18px;
     margin-top:20px;
     margin-bottom:20px;
     color: chocolate;
@@ -22,7 +22,7 @@
     background-image: url(../public/restaurant2.png);
     /* background-position: top; */
     position: absolute;
-    top: 102px;
+    top: 69px;
     bottom: 0px;
     width: 100%;
 }

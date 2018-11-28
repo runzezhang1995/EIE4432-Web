@@ -41,6 +41,8 @@
     position: absolute;
     float: left;
     overflow-y: auto;
+    left: 0;
+    right: 0;
 }
 
 #left-side-holder {
