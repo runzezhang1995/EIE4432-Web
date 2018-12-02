@@ -21,7 +21,7 @@ function searchRestaurant() {
         'cuisine': cuisine == 'All Cuisine' ? '': cuisine
     };
     
-    // console.log(data);
+    console.log(data);
     $.post('/EIE4432-WEB/src/server/api/getRestaurant.php',data, (data, status, xhr)=> {
         // console.log(data);
         if(status === 'success') {
