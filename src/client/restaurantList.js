@@ -4,6 +4,7 @@ import '@chenfengyuan/datepicker';
 import '../../node_modules/@chenfengyuan/datepicker/dist/datepicker.js';
 import '../../node_modules/@chenfengyuan/datepicker/dist/datepicker.css';
 import moment from 'moment';
+import { trimExt } from 'upath';
 
 const arrowSpan = '&nbsp <span class="caret"></span>'
 let cuisine = '';
@@ -16,11 +17,13 @@ let uid = '';
 
 function searchRestaurant() {
     const data = {
-        'cuisine':cuisine,
-        'keyword':$('#search_input').val()
+        'keyword':$('#search_input').val(),
+        'cuisine': cuisine == 'All Cuisine' ? '': cuisine
     };
+    
+    // console.log(data);
     $.post('/EIE4432-WEB/src/server/api/getRestaurant.php',data, (data, status, xhr)=> {
-        console.log(data);
+        // console.log(data);
         if(status === 'success') {
             restaurants = data.restaurants;
             $('#restaurant-grid').empty();
@@ -32,14 +35,14 @@ function searchRestaurant() {
                 if (restaurant.restaurant === null) {
                     
                 } else {
-                    const costNTimeString = restaurant.average_cost + ' ' +
+                    const costNTimeString = $.trim(restaurant.average_cost)+ ' HKD ' +
                         moment(restaurant.start,'HH:mm:ss').format('HH:mm') + ' - ' + 
                         moment(restaurant.close,'HH:mm:ss').format('HH:mm') ;
 
                     $('#restaurant-grid').append(`
                         <div class="grid-item  col-md-3 col-lg-2" style="text-align:center;min-height:200px" data-restaurant_id="${restaurant.restaurant_id}">
                             <div style="display:inline-block;position:relative">
-                                <img class="img-responsive grid-item-img" id="img-${restaurant.restaurant_id}" src='../../public/no_image.jpg'} alt=${restaurant.restaurant_id} data-restaurant_id="${restaurant.restaurant_id}"/>
+                                <img class="img-responsive grid-item-img" id="img-${restaurant.restaurant_id}" src=${restaurant.thumbnail_image?restaurant.thumbnail_image : '../../public/no_image.jpg'} alt=${restaurant.restaurant_id} data-restaurant_id="${restaurant.restaurant_id}"/>
                             </div>
                             <p class="restaurant-info restaurant-name">${restaurant.restaurant}</p>
                             <p class="restaurant-info restaurant-cuisine">${restaurant.cuisines}</p>
@@ -56,7 +59,7 @@ function searchRestaurant() {
             $('.hover-cover').click((e)=> {
                 const tgt = e.currentTarget;
                 const restaurantId = $(tgt).data('restaurant_id');
-                console.log(restaurantId);
+                // console.log(restaurantId);
 
                 let restaurant = null;
                 restaurants.forEach(rt => {
@@ -65,7 +68,7 @@ function searchRestaurant() {
                     }
                 });
 
-                console.log(restaurant);
+                // console.log(restaurant);
                 $('#restaurant-address-label').text(restaurant.address);
                 $('#restaurant-phone-label').text(restaurant.phone);
                 $('#restaurant-website-label').text(restaurant.website);
@@ -101,7 +104,7 @@ function searchRestaurant() {
                     e.preventDefault();
                     const date = $('#date-picker').datepicker('getDate', true);
                     const dateString = moment(date, 'MM/DD/YYYY');
-                    console.log(dateString);
+                    // console.log(dateString);
 
 
                     const today = moment();
@@ -133,10 +136,10 @@ function searchRestaurant() {
                         "Ophone": phoneNumber,
                         "ordertime": moment().format(),
                     }
-                    console.log(dataToSubmit);
+                    // console.log(dataToSubmit);
                     $.post('/EIE4432-WEB/src/server/api/Order.php', dataToSubmit, (data, status) => {
-                        console.log(data);
-                        console.log(status);
+                        // console.log(data);
+                        // console.log(status);
                     if (status === 'success') {
                             $('#order-result-label').text = " Order placed, please wait for confirmation from the restaurant";
                         } else {
